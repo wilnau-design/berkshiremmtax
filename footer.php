@@ -44,11 +44,11 @@
 						</li>
 						<li>
 							<img src="<?php echo bmm_tax_asset( 'images/icon-facebook.svg' ); ?>" alt="" width="16" height="16" />
-							<a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">/facebook</a>
+							<a href="https://www.facebook.com/berkshiremmtax" target="_blank" rel="noopener noreferrer">/facebook</a>
 						</li>
 						<li>
 							<img src="<?php echo bmm_tax_asset( 'images/icon-linkedin.svg' ); ?>" alt="" width="16" height="16" />
-							<a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">/linked-in</a>
+							<a href="https://www.linkedin.com/company/berkshiremmtax" target="_blank" rel="noopener noreferrer">/linked-in</a>
 						</li>
 					</ul>
 				</div>
