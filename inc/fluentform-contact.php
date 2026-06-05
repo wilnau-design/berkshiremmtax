@@ -37,7 +37,7 @@ function bmm_tax_contact_form_field( $index, $element, $name, $label, $placehold
 			'placeholder' => $placeholder,
 		),
 		'settings'       => array(
-			'container_class'    => 'contact-form__field',
+			'container_class'    => 'bmm-form__field',
 			'label'              => $label,
 			'label_placement'    => '',
 			'admin_field_label'  => $label,
@@ -126,7 +126,7 @@ function bmm_tax_ensure_contact_form() {
 		bmm_tax_contact_form_field( 3, 'textarea', 'message', __( 'Message', 'bmm-tax' ), __( 'Your message…', 'bmm-tax' ), true ),
 	);
 
-	$fields['submitButton']['settings']['container_class'] = 'contact-form__submit';
+	$fields['submitButton']['settings']['container_class'] = 'bmm-form__submit';
 	$fields['submitButton']['settings']['button_ui']['text'] = __( 'SUBMIT', 'bmm-tax' );
 	$fields['submitButton']['settings']['align']             = 'left';
 
@@ -181,7 +181,7 @@ function bmm_tax_render_contact_form() {
 
 	echo do_shortcode(
 		sprintf(
-			'[fluentform id="%1$d" css_classes="contact-form" theme="ffs_inherit_theme"]',
+			'[fluentform id="%1$d" css_classes="bmm-form" theme="ffs_inherit_theme"]',
 			$form_id
 		)
 	);
@@ -200,7 +200,7 @@ function bmm_tax_fluentform_submit_button_data( $data, $form ) {
 	}
 
 	$data['attributes']['class'] = trim( ( $data['attributes']['class'] ?? '' ) . ' wp-element-button bmm-button bmm-button--primary' );
-	$data['settings']['container_class'] = 'contact-form__submit';
+	$data['settings']['container_class'] = 'bmm-form__submit';
 
 	return $data;
 }

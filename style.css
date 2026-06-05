@@ -3,7 +3,7 @@ Theme Name: BMM Tax
 Theme URI: https://berkshiremmtax.com
 Author: Wilnau Design
 Description: Classic hybrid theme for BMM Tax and Accounting microsite.
-Version: 1.0.10
+Version: 1.0.11
 Requires at least: 6.1
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -263,12 +263,24 @@ body.admin-bar {
 	height: 14px;
 }
 
-/* === Forms (contact, search, etc.) === */
+/* === Forms (global) === */
 
+.bmm-form__field,
 .contact-form__field {
 	margin: 0 0 var(--wp--preset--spacing--50);
 }
 
+.bmm-form > p:not(.form-submit),
+.bmm-form .comment-form-comment,
+.bmm-form .comment-form-author,
+.bmm-form .comment-form-email,
+.bmm-form .comment-form-url,
+.bmm-form .comment-form-cookies-consent {
+	margin: 0 0 var(--wp--preset--spacing--50);
+}
+
+.bmm-form label,
+.bmm-form .ff-el-input--label label,
 .contact-form label,
 .contact-form .ff-el-input--label label {
 	display: block;
@@ -277,6 +289,24 @@ body.admin-bar {
 	font-size: var(--wp--preset--font-size--large);
 }
 
+.bmm-form .comment-form-cookies-consent label {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--wp--preset--spacing--30);
+	margin-bottom: 0;
+	font-weight: 400;
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+.bmm-form .comment-notes {
+	margin: 0 0 var(--wp--preset--spacing--50);
+	font-size: var(--wp--preset--font-size--medium);
+	color: rgba(24, 24, 24, 0.88);
+}
+
+.bmm-form input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+.bmm-form textarea,
+.bmm-form .ff-el-form-control,
 .contact-form input,
 .contact-form textarea,
 .contact-form .ff-el-form-control {
@@ -290,6 +320,16 @@ body.admin-bar {
 	color: var(--wp--preset--color--contrast);
 }
 
+.bmm-form input[type="checkbox"] {
+	width: auto;
+	margin-top: 0.2em;
+	flex-shrink: 0;
+	accent-color: var(--wp--preset--color--accent);
+}
+
+.bmm-form input::placeholder,
+.bmm-form textarea::placeholder,
+.bmm-form .ff-el-form-control::placeholder,
 .contact-form input::placeholder,
 .contact-form textarea::placeholder,
 .contact-form .ff-el-form-control::placeholder {
@@ -297,18 +337,26 @@ body.admin-bar {
 	opacity: 0.55;
 }
 
+.bmm-form textarea,
+.bmm-form textarea.ff-el-form-control,
 .contact-form textarea,
 .contact-form textarea.ff-el-form-control {
 	resize: vertical;
 	min-height: 140px;
 }
 
+.bmm-form__submit,
+.bmm-form .bmm-form__submit,
+.bmm-form .contact-form__submit,
+.bmm-form .ff_submit_btn_wrapper,
 .contact-form__submit,
 .contact-form .contact-form__submit,
 .contact-form .ff_submit_btn_wrapper {
 	margin: 0;
 }
 
+.bmm-form__submit .bmm-button,
+.bmm-form .ff-btn-submit.bmm-button,
 .contact-form__submit .bmm-button,
 .contact-form .ff-btn-submit.bmm-button {
 	width: 100%;
@@ -694,6 +742,21 @@ body.admin-bar {
 	margin-bottom: var(--wp--preset--spacing--70);
 }
 
+body.single .entry-thumbnail {
+	margin: 0 0 var(--wp--preset--spacing--70);
+	border-radius: 12px;
+	overflow: hidden;
+	aspect-ratio: 16 / 9;
+	background-color: var(--wp--preset--color--base-2);
+}
+
+body.single .entry-thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
 .site-main--page .entry-content {
 	font-size: var(--wp--preset--font-size--large);
 	line-height: 1.65;
@@ -749,6 +812,24 @@ body.admin-bar {
 .site-main--page .entry-content a:hover,
 .site-main--page .entry-content a:focus-visible {
 	color: var(--wp--preset--color--contrast-2);
+}
+
+.site-main--page .comments-area {
+	margin-top: var(--wp--preset--spacing--70);
+}
+
+.site-main--page .comments-title,
+.site-main--page .comment-reply-title {
+	margin: 0 0 var(--wp--preset--spacing--50);
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: var(--wp--preset--font-size--heading-4);
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--wp--preset--color--contrast);
+}
+
+.site-main--page .comment-reply-title {
+	margin-top: var(--wp--preset--spacing--70);
 }
 
 /* === Blog & utility === */

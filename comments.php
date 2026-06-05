@@ -9,7 +9,7 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-<section id="comments" class="comments-area alignwide">
+<section id="comments" class="comments-area aligncontent">
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php

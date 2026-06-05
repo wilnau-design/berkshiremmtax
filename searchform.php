@@ -1,6 +1,6 @@
 <?php
 /**
- * Search form markup (matches contact form styles).
+ * Search form markup (uses global bmm-form styles).
  *
  * @package BMM_Tax
  */
@@ -8,7 +8,7 @@
 $unique_id = wp_unique_id( 'search-form-' );
 ?>
 
-<form role="search" method="get" class="contact-form search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<form role="search" method="get" class="bmm-form search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label class="search-form__label" for="<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Search', 'bmm-tax' ); ?></label>
 	<div class="search-form__control">
 		<input

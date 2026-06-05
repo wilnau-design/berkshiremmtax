@@ -105,6 +105,22 @@ function bmm_tax_button_outline( $label, $url ) {
 }
 
 /**
+ * Match the comment form markup and classes to global form styles.
+ *
+ * @param array $defaults Comment form defaults.
+ * @return array
+ */
+function bmm_tax_comment_form_defaults( $defaults ) {
+	$defaults['class_form']   = 'comment-form bmm-form';
+	$defaults['class_submit'] = 'bmm-button bmm-button--primary wp-element-button';
+	$defaults['submit_button'] = '<button name="%1$s" type="submit" id="%2$s" class="%3$s"><span>%4$s</span>' . bmm_tax_arrow_icon() . '</button>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- SVG markup.
+	$defaults['submit_field']  = '<p class="form-submit bmm-form__submit">%1$s %2$s</p>';
+
+	return $defaults;
+}
+add_filter( 'comment_form_defaults', 'bmm_tax_comment_form_defaults' );
+
+/**
  * Team member bio popup modal.
  *
  * @param array $member {
@@ -244,7 +260,7 @@ function bmm_tax_folder_card( $title, $text, $icon, $mod = '' ) {
 	?>
 	<article class="<?php echo esc_attr( $class ); ?>">
 		<div class="folder-card__frame">
-		<svg class="folder-card__shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="342" height="338" viewBox="33 36 342 338" fill="none">
+		<svg class="folder-card__shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="33 36 342 338" preserveAspectRatio="none" fill="none">
 			<g>
 				<path class="folder-card__shape-fill" d="M45 374H363C369.627 374 375 368.627 375 362V79.8868C375 73.2594 369.627 67.8868 363 67.8868H117.969V48C117.969 41.3726 112.596 36 105.969 36H45C38.3726 36 33 41.3726 33 48V362C33 368.627 38.3726 374 45 374Z" fill="currentColor"/>
 				<path class="folder-card__shape-dots" d="M45 374H363C369.627 374 375 368.627 375 362V79.8868C375 73.2594 369.627 67.8868 363 67.8868H117.969V48C117.969 41.3726 112.596 36 105.969 36H45C38.3726 36 33 41.3726 33 48V362C33 368.627 38.3726 374 45 374Z" fill="url(#pattern_dotted_bg)" fill-opacity="0.1"/>
