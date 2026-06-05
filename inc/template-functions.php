@@ -110,13 +110,13 @@ function bmm_tax_button_outline( $label, $url ) {
 function bmm_tax_page_hero_sun() {
 	?>
 	<picture>
-		<source media="(max-width: 900px)" srcset="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>" type="image/webp" width="200" height="200" />
+		<source media="(min-width: 901px)" srcset="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>" type="image/webp" width="501" height="502" />
 		<img
 			class="page-hero__sun"
-			src="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>"
+			src="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>"
 			alt=""
-			width="501"
-			height="502"
+			width="200"
+			height="200"
 			decoding="async"
 		/>
 	</picture>
