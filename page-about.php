@@ -82,7 +82,7 @@ $team_cards = array( $team_member, $team_member );
 	</section>
 
 	<section class="alignfull audience-section">
-		<div class="alignwide audience-section__inner animate-on-scroll">
+		<div class="alignwide audience-section__inner">
 			<h2 class="audience-section__title"><?php esc_html_e( 'Who this is for', 'bmm-tax' ); ?></h2>
 			<p class="audience-section__intro"><?php esc_html_e( 'If any of the following apply to you...', 'bmm-tax' ); ?></p>
 			<div class="audience-cards">

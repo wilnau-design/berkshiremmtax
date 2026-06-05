@@ -44,7 +44,7 @@ get_header();
 	</section>
 
 	<section class="alignfull why-section">
-		<div class="alignwide why-section__inner animate-on-scroll">
+		<div class="alignwide why-section__inner">
 			<h2 class="why-section__title"><?php esc_html_e( 'Why hard-working Berkshire families choose BMM Tax', 'bmm-tax' ); ?></h2>
 			<div class="why-section__cards">
 				<blockquote class="quote-card">

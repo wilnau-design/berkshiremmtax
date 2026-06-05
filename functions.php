@@ -112,6 +112,62 @@ function bmm_tax_preload_page_hero_sun() {
 add_action( 'wp_head', 'bmm_tax_preload_page_hero_sun', 1 );
 
 /**
+ * Preload local fonts registered in theme.json.
+ */
+function bmm_tax_preload_fonts() {
+	$settings = wp_get_global_settings();
+
+	if ( empty( $settings['typography']['fontFamilies'] ) ) {
+		return;
+	}
+
+	$urls = array();
+
+	foreach ( $settings['typography']['fontFamilies'] as $font_families ) {
+		foreach ( $font_families as $definition ) {
+			if ( empty( $definition['fontFace'] ) ) {
+				continue;
+			}
+
+			foreach ( $definition['fontFace'] as $face ) {
+				if ( empty( $face['src'] ) ) {
+					continue;
+				}
+
+				foreach ( (array) $face['src'] as $src ) {
+					if ( ! str_starts_with( $src, 'file:./' ) ) {
+						continue;
+					}
+
+					$urls[] = get_theme_file_uri( substr( $src, 6 ) );
+				}
+			}
+		}
+	}
+
+	foreach ( array_unique( $urls ) as $url ) {
+		$extension = strtolower( pathinfo( wp_parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+
+		if ( 'woff2' === $extension ) {
+			$type = 'font/woff2';
+		} elseif ( 'woff' === $extension ) {
+			$type = 'font/woff';
+		} elseif ( 'otf' === $extension ) {
+			$type = 'font/otf';
+		} else {
+			$type = 'font/ttf';
+		}
+
+		printf(
+			'<link rel="preload" as="font" href="%s" type="%s" crossorigin />' . "\n",
+			esc_url( $url ),
+			esc_attr( $type )
+		);
+	}
+}
+add_action( 'wp_head', 'bmm_tax_preload_fonts', 1 );
+
+/**
  * Scroll animation observer.
  */
 function bmm_tax_scroll_animations() {
