@@ -105,6 +105,25 @@ function bmm_tax_button_outline( $label, $url ) {
 }
 
 /**
+ * Decorative sun graphic for About and Recruitment hero sections.
+ */
+function bmm_tax_page_hero_sun() {
+	?>
+	<picture>
+		<source media="(max-width: 900px)" srcset="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>" type="image/webp" width="200" height="200" />
+		<img
+			class="page-hero__sun"
+			src="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>"
+			alt=""
+			width="501"
+			height="502"
+			decoding="async"
+		/>
+	</picture>
+	<?php
+}
+
+/**
  * Match the comment form markup and classes to global form styles.
  *
  * @param array $defaults Comment form defaults.

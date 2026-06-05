@@ -95,6 +95,23 @@ function bmm_tax_preload_hero_illustration() {
 add_action( 'wp_head', 'bmm_tax_preload_hero_illustration', 1 );
 
 /**
+ * Preload the hero sun graphic on About and Recruitment pages.
+ */
+function bmm_tax_preload_page_hero_sun() {
+	$is_about        = bmm_tax_is_page_template_file( 'page-about.php' );
+	$is_recruitment  = bmm_tax_is_page_template_file( 'page-recruitment.php' );
+
+	if ( ! $is_about && ! $is_recruitment ) {
+		return;
+	}
+	?>
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>" media="(min-width: 901px)" type="image/webp" />
+	<?php
+}
+add_action( 'wp_head', 'bmm_tax_preload_page_hero_sun', 1 );
+
+/**
  * Scroll animation observer.
  */
 function bmm_tax_scroll_animations() {

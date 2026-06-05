@@ -91,6 +91,10 @@
 	aspect-ratio: 1;
 }
 
+.page-about .page-hero__sun-group picture {
+	display: contents;
+}
+
 .page-about .page-hero__sun {
 	position: absolute;
 	inset: 0;

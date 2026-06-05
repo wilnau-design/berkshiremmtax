@@ -71,7 +71,7 @@ $team_cards = array( $team_member, $team_member );
 		<div class="page-hero__art" aria-hidden="true">
 			<img class="page-hero__cloud page-hero__cloud--3 page-hero__cloud--left" src="<?php echo bmm_tax_asset( 'images/graphic-cloud-3.webp' ); ?>" alt="" width="291" height="56" />
 			<div class="page-hero__sun-group">
-				<img class="page-hero__sun" src="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>" alt="" width="501" height="502" />
+				<?php bmm_tax_page_hero_sun(); ?>
 				<img class="page-hero__cloud page-hero__cloud--5" src="<?php echo bmm_tax_asset( 'images/graphic-cloud-5.webp' ); ?>" alt="" width="77" height="10" />
 				<img class="page-hero__cloud page-hero__cloud--2" src="<?php echo bmm_tax_asset( 'images/graphic-cloud-2.webp' ); ?>" alt="" width="318" height="14" />
 			</div>

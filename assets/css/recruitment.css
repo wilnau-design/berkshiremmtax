@@ -106,15 +106,19 @@
 	aspect-ratio: 1;
 }
 
+.page-recruitment .page-hero__sun-group picture {
+	display: contents;
+}
+
 .page-recruitment .page-hero__sun {
-    position: absolute;
-    inset: 0;
-    width: 500px;
-    left: 60%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    opacity: 0.2;
+	position: absolute;
+	inset: 0;
+	width: 500px;
+	left: 60%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
+	opacity: 0.2;
 }
 
 .page-recruitment .page-hero__sun-group .page-hero__cloud--5 {
