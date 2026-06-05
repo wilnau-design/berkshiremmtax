@@ -81,6 +81,20 @@ function bmm_tax_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'bmm_tax_enqueue_assets' );
 
 /**
+ * Preload the hero illustration on the front page (mobile + desktop variants).
+ */
+function bmm_tax_preload_hero_illustration() {
+	if ( ! is_front_page() ) {
+		return;
+	}
+	?>
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration.webp' ); ?>" media="(min-width: 901px)" type="image/webp" />
+	<?php
+}
+add_action( 'wp_head', 'bmm_tax_preload_hero_illustration', 1 );
+
+/**
  * Scroll animation observer.
  */
 function bmm_tax_scroll_animations() {

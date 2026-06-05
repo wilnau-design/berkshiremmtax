@@ -26,6 +26,10 @@
 	overflow: hidden;
 }
 
+.hero__illustration-wrap picture {
+	display: block;
+}
+
 .hero__illustration {
 	width: 100%;
 	height: auto;

@@ -12,7 +12,18 @@ get_header();
 
 	<section class="alignfull hero">
 		<div class="hero__illustration-wrap" aria-hidden="true">
-			<img class="hero__illustration" src="<?php echo bmm_tax_asset( 'images/hero-illustration.webp' ); ?>" alt="" width="1440" height="520" />
+			<picture>
+				<source media="(max-width: 900px)" srcset="<?php echo bmm_tax_asset( 'images/hero-illustration-mobile.webp' ); ?>" type="image/webp" width="768" height="280" />
+				<img
+					class="hero__illustration"
+					src="<?php echo bmm_tax_asset( 'images/hero-illustration.webp' ); ?>"
+					alt=""
+					width="1440"
+					height="520"
+					fetchpriority="high"
+					decoding="async"
+				/>
+			</picture>
 		</div>
 		<div class="alignwide hero__inner">
 			<h1 class="hero__title<?php echo wp_is_mobile() ? ' hero__title--mobile' : ' hero__title--desktop'; ?>">
