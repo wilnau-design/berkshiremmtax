@@ -88,8 +88,8 @@ function bmm_tax_preload_hero_illustration() {
 		return;
 	}
 	?>
-	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" />
-	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration.webp' ); ?>" media="(min-width: 901px)" type="image/webp" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" fetchpriority="high" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/hero-illustration.webp' ); ?>" media="(min-width: 901px)" type="image/webp" fetchpriority="high" />
 	<?php
 }
 add_action( 'wp_head', 'bmm_tax_preload_hero_illustration', 1 );
@@ -105,63 +105,26 @@ function bmm_tax_preload_page_hero_sun() {
 		return;
 	}
 	?>
-	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" />
-	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>" media="(min-width: 901px)" type="image/webp" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange-mobile.webp' ); ?>" media="(max-width: 900px)" type="image/webp" fetchpriority="high" />
+	<link rel="preload" as="image" href="<?php echo bmm_tax_asset( 'images/graphic-dotted-circle-orange.webp' ); ?>" media="(min-width: 901px)" type="image/webp" fetchpriority="high" />
 	<?php
 }
 add_action( 'wp_head', 'bmm_tax_preload_page_hero_sun', 1 );
 
 /**
- * Preload local fonts registered in theme.json.
+ * Preload critical local fonts (above-the-fold weights only).
  */
 function bmm_tax_preload_fonts() {
-	$settings = wp_get_global_settings();
+	$fonts = array(
+		'AlanSans-Regular.ttf',
+		'DMSans-Regular.ttf',
+		'DMSans-Medium.ttf',
+	);
 
-	if ( empty( $settings['typography']['fontFamilies'] ) ) {
-		return;
-	}
-
-	$urls = array();
-
-	foreach ( $settings['typography']['fontFamilies'] as $font_families ) {
-		foreach ( $font_families as $definition ) {
-			if ( empty( $definition['fontFace'] ) ) {
-				continue;
-			}
-
-			foreach ( $definition['fontFace'] as $face ) {
-				if ( empty( $face['src'] ) ) {
-					continue;
-				}
-
-				foreach ( (array) $face['src'] as $src ) {
-					if ( ! str_starts_with( $src, 'file:./' ) ) {
-						continue;
-					}
-
-					$urls[] = get_theme_file_uri( substr( $src, 6 ) );
-				}
-			}
-		}
-	}
-
-	foreach ( array_unique( $urls ) as $url ) {
-		$extension = strtolower( pathinfo( wp_parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
-
-		if ( 'woff2' === $extension ) {
-			$type = 'font/woff2';
-		} elseif ( 'woff' === $extension ) {
-			$type = 'font/woff';
-		} elseif ( 'otf' === $extension ) {
-			$type = 'font/otf';
-		} else {
-			$type = 'font/ttf';
-		}
-
+	foreach ( $fonts as $file ) {
 		printf(
-			'<link rel="preload" as="font" href="%s" type="%s" crossorigin />' . "\n",
-			esc_url( $url ),
-			esc_attr( $type )
+			'<link rel="preload" as="font" href="%s" type="font/ttf" crossorigin />' . "\n",
+			bmm_tax_asset( 'fonts/' . $file )
 		);
 	}
 }
